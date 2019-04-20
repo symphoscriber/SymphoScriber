@@ -3,11 +3,16 @@ import math
 import matplotlib.pyplot as plt
 from scipy.io import wavfile
 
-def spectrogram(samples:np.ndarray, sample_rate:int, interval:int):
+def spectrogram(filepath:str, interval: int) -> tuple:
     """
-    convert the input 1d array to its spectrogram form
+    read a .wav audio and extracts its sample rate and audio data, and convert to spectrogram
+    only keeping 1 channel if multiple channels exist in the .wav
+    TODO: might use librosa to get mono channel 1d array
     """
-    return plt.specgram(x=samples, Fs=sample_rate, NFFT=sample_rate//64)
+    fs, samples = wavfile.read(filepath)
+    if samples.shape[1] > 1:
+        samples = samples[:,0]
+    return plt.specgram(x=samples, Fs=fs, NFFT=fs//interval)
 
 def windowing(spec:tuple, n_window:int) -> tuple:
     """

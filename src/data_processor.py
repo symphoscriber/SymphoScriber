@@ -29,3 +29,4 @@ def windowing(spec:tuple, n_window:int) -> tuple:
             yield (window_sample, window_freq, window_t)
         except GeneratorExit:
             raise Exception("Something wrong with generator")
+

@@ -228,4 +228,7 @@ GitHub.sublime-settings
 # Ignore all local history of files
 .history
 
+### Intellj IDEA
+.idea/
+
 # End of https://www.gitignore.io/api/emacs,python,sublimetext,jupyternotebook,visualstudiocode
